@@ -374,7 +374,7 @@ def chop_image(background_image:Image, layer_image:Image, blend_mode:str, opacit
 
 def chop_image_v2(background_image:Image, layer_image:Image, blend_mode:str, opacity:int) -> Image:
 
-    backdrop_prepped = np.asarray(background_image.convert('RGBA'), dtype=float)
+    backdrop_prepped = np.asarray(background_image.convert('RGBA'), dtype=np.float32)
     source_prepped = np.asarray(layer_image.convert('RGBA'), dtype=float)
     blended_np = BLEND_MODES[blend_mode](backdrop_prepped, source_prepped, opacity / 100)
 
@@ -2551,3 +2551,4 @@ minicpm_llama3_v25_prompts = """
         Your output should just be an plain list of descriptions. No numbers, no extraneous labels, no hyphens.
         Create only one prompt.
         """
+
